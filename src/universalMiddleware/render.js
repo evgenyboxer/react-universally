@@ -81,7 +81,7 @@ type RenderArgs = {
  * @return The full HTML page in the form of a React element.
  */
 function render(args: RenderArgs) {
-  const { app, initialState, nonce, helmet, codeSplitState } = args;
+  const { markup, initialState, nonce, helmet, codeSplitState } = args;
 
   // The chunks that we need to fetch the assets (js/css) for and then include
   // said assets as script/style tags within our html.
@@ -121,7 +121,7 @@ function render(args: RenderArgs) {
         ${helmet ? helmet.style.toString() : ''}
       </head>
       <body>
-        <div id='app'>${app || ''}</div>
+        <div id='app'>${markup || ''}</div>
 
         ${initialState
            ? inlineScript(`window.APP_STATE=${serialize(initialState)};`)
